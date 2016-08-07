@@ -8,31 +8,27 @@ $(document).ready(function() {
 
 });
 var i = 1;
+
 function newSpy() {
     $("<div />", {
-            "class": "spy",
-            id: "newSpy" + i
-        })
-        .appendTo(".newContainer").text("New Spy" + i);
+        "class": "spy",
+        id: "newSpy" + i
+    }).appendTo(".newContainer").text("New Spy" + i);
     $(".spy").last().append("<button class='deleter'>Delete Spy</button>");
     $(".spy").last().append("<button class='changer'>Change</button>");
+    $(".spy").last().append("<p style='display: inline'>Total Spies Hired:" + i + "</p>");
     i++;
 }
 
+//To get your delete and change buttons to only effect their containing div,
+// you'll need to use $(this).parent(), where $(this) refers to the button
+// that was clicked.
+
 function deleteSpy() {
-    $(".spy").remove();
+    $(this).parent().remove();
 }
 
-function changeStatus(){
-	$(".spy").css("backgroundColor", "red");
+function changeStatus() {
+    // $(this).parent().css("backgroundColor", "red");
+    $(this).parent().toggleClass("spyInDanger");
 }
-
-
-// document.getElementById('test').style.backgroundColor === colorToCompare
-// function changeStatus() {
-// 	if( document.getElementByClass('.spy').style.backgroundColor === "yellow"){
-//     $(".spy").css('background-color', 'red');
-// 	} else {
-// 		$(".spy").css('background-color', 'yellow');
-// 	}
-// }
