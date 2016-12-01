@@ -1,13 +1,45 @@
+h1 {}
+
+h2 {
+    padding: 0 3% 0 3%;
+    margin: 0;
+}
+
 .container {
     border: 1px solid black;
     height: 300px;
 }
+
 .newContainer {
     border: 1px solid black;
 }
+
 .spy {
     background-color: yellow;
 }
+
 .spyInDanger {
     background-color: red;
+}
+
+.deadSpy {
+  background-color: black;
+  color: white;
+}
+
+.spyStats {
+    /*float: right;*/
+    display: block;
+    border: thin solid green;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.hiredSpiesNum {
+  display: inline;
+}
+
+.hiredSpiesLabel{
+  display: inline;
 }

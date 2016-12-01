@@ -2,35 +2,35 @@ $(document).ready(function() {
     $(".container").append("<div class='newContainer'></div>");
 
     $(".addSpy").on('click', newSpy);
-    $(".newContainer").on('click', ".deleter", deleteSpy);
+    $(".newContainer").on('click', ".spyDiedButton", spyDied);
+    $(".newContainer").on('click', ".deleter", deleteSpyRecord);
     $(".newContainer").on('click', ".changer", changeStatus);
 
 });
-var i = 1;
+
+// Variables
+var firstNames = ["Mata", "Julius", "Ethel", "Aldrich", "Giacomo", "Klaus", "John", "Nathan", "Belle", "Richard"];
+var lastNames = ["Hari", "Rosenberg", "Ames", "Casanova", "Fuchs", "Andre", "Hale", "Boyd", "Sorge", "Bromander"];
+var numberOfSpies = 1;
 
 function newSpy() {
-  randomizeNames(firstNames, lastNames)
+    // run random name function to get a new name
+    randomizeNames(firstNames, lastNames);
 
     // make a new row container for each new spy
-    $("<div />", {
-        "class": "spy"
-    }).appendTo(".newContainer").text(newFullName);
-    // $(".newContainer").append("<div class='spy'></div>").text("New Spy" + i); //didn't work
-    //     $(".newContainer").append("<div class='spy'>"
-    //         New Spy + "i"
-    //         "</div>"); // didn't work
-    //   $(".newContainer").last().append("<div class='spy'>New Spy" + i + "</div>"); //didn't work
+    $("<div class='spy'></div>").appendTo(".newContainer").text(newFullName);
 
     // add a Delete Button onto each spy row
-    $(".spy").last().append("<button class='deleter'>Delete Spy</button>");
+    $(".spy").last().append("<button class='spyDiedButton'>Died</button>");
     // add change status Button onto each spy row
     $(".spy").last().append("<button class='changer'>Change</button>");
     // display # of total spies hired
-    $(".spy").last().append("<p style='display: inline'>Total Spies Hired:" + i + "</p>");
-    i++;
+    $(".hiredSpiesNum").empty();
+    $(".hiredSpiesNum").append(numberOfSpies);
+
+    // increment # of spies hired each time you generate a new spy
+    numberOfSpies++;
 }
-var firstNames = ["Mata", "Julius", "Ethel", "Aldrich", "Giacomo", "Klaus", "John", "Nathan", "Belle", "Richard"];
-var lastNames = ["Hari", "Rosenberg", "Ames", "Casanova", "Fuchs", "Andre", "Hale", "Boyd", "Sorge", "Bromander"];
 
 // Spy Name Randomizer
 var randomizeNames = function(inputOne, inputTwo) {
@@ -45,8 +45,21 @@ var randomizeNames = function(inputOne, inputTwo) {
 // you'll need to use $(this).parent(), where $(this) refers to the button
 // that was clicked.
 
-function deleteSpy() {
+function deleteSpyRecord() {
     $(this).parent().remove();
+}
+
+function spyDied() {
+    //change spy record row to black and white
+    $(this).parent().addClass("deadSpy");
+
+
+    // remove the "change" button
+    $(this).parent().find("button.changer").remove();
+    // add a Delete Button onto each spy row
+    $(this).parent().append("<button class='deleter'>Delete Spy</button>");
+    //remove button that was just pressed ("Died")! XD
+    $(this).remove();
 }
 
 function changeStatus() {
