@@ -34,20 +34,12 @@ var lastNames = ["Hari", "Rosenberg", "Ames", "Casanova", "Fuchs", "Andre", "Hal
 
 // Spy Name Randomizer
 var randomizeNames = function(inputOne, inputTwo) {
-    // console.log(input);
     newFullName = [];
-    console.log("initial array: ", inputOne, inputTwo);
-
     var randomNumberOne = Math.floor(Math.random() * firstNames.length);
     var randomNumberTwo = Math.floor(Math.random() * lastNames.length);
 
-    newFullName.push(firstNames[randomNumberOne]+ " " + lastNames[randomNumberTwo]);
-    console.log("newFullName array: ", newFullName);
+    newFullName.push(firstNames[randomNumberOne] + " " + lastNames[randomNumberTwo]);
 }
-
-randomizeNames(firstNames, lastNames);
-
-console.log("newFullName outside function: ", newFullName);
 
 // To get your delete and change buttons to only effect their containing div,
 // you'll need to use $(this).parent(), where $(this) refers to the button
