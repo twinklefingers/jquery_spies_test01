@@ -5,22 +5,51 @@ $(document).ready(function() {
     $(".newContainer").on('click', ".deleter", deleteSpy);
     $(".newContainer").on('click', ".changer", changeStatus);
 
-
 });
 var i = 1;
 
 function newSpy() {
+  randomizeNames(firstNames, lastNames)
+
+    // make a new row container for each new spy
     $("<div />", {
-        "class": "spy",
-        id: "newSpy" + i
-    }).appendTo(".newContainer").text("New Spy" + i);
+        "class": "spy"
+    }).appendTo(".newContainer").text(newFullName);
+    // $(".newContainer").append("<div class='spy'></div>").text("New Spy" + i); //didn't work
+    //     $(".newContainer").append("<div class='spy'>"
+    //         New Spy + "i"
+    //         "</div>"); // didn't work
+    //   $(".newContainer").last().append("<div class='spy'>New Spy" + i + "</div>"); //didn't work
+
+    // add a Delete Button onto each spy row
     $(".spy").last().append("<button class='deleter'>Delete Spy</button>");
+    // add change status Button onto each spy row
     $(".spy").last().append("<button class='changer'>Change</button>");
+    // display # of total spies hired
     $(".spy").last().append("<p style='display: inline'>Total Spies Hired:" + i + "</p>");
     i++;
 }
+var firstNames = ["Mata", "Julius", "Ethel", "Aldrich", "Giacomo", "Klaus", "John", "Nathan", "Belle", "Richard"];
+var lastNames = ["Hari", "Rosenberg", "Ames", "Casanova", "Fuchs", "Andre", "Hale", "Boyd", "Sorge", "Bromander"];
 
-//To get your delete and change buttons to only effect their containing div,
+// Spy Name Randomizer
+var randomizeNames = function(inputOne, inputTwo) {
+    // console.log(input);
+    newFullName = [];
+    console.log("initial array: ", inputOne, inputTwo);
+
+    var randomNumberOne = Math.floor(Math.random() * firstNames.length);
+    var randomNumberTwo = Math.floor(Math.random() * lastNames.length);
+
+    newFullName.push(firstNames[randomNumberOne]+ " " + lastNames[randomNumberTwo]);
+    console.log("newFullName array: ", newFullName);
+}
+
+randomizeNames(firstNames, lastNames);
+
+console.log("newFullName outside function: ", newFullName);
+
+// To get your delete and change buttons to only effect their containing div,
 // you'll need to use $(this).parent(), where $(this) refers to the button
 // that was clicked.
 
