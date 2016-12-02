@@ -66,6 +66,7 @@ button {
 .dangerMessage {
   color: red;
   font-weight: bolder;
+  font-style: italic;
 }
 
 .spiesInDangerLabel {

@@ -66,13 +66,18 @@ function deleteSpyRecord() {
 function spyDied() {
     // decrement # of spies active
     activeSpiesNum--;
+    // decrement spies in danger if applicable
+    if ($(this).parent().hasClass("spyInDanger")) {
+        changeStatus();
+    }
     // display # of total spies active
     $(".activeSpiesNum").empty();
     $(".activeSpiesNum").append(activeSpiesNum);
 
     //change spy record row to black and white
     $(this).parent().addClass("deadSpy");
-    // remove the "change" button
+
+    // remove the danger and/or safe button
     $(this).parent().find("button.clickIfDangerButton").remove();
     $(this).parent().find("button.changer").remove();
 
@@ -82,13 +87,20 @@ function spyDied() {
     $(this).remove();
 }
 
-// Toggle Spy Status (In Danger or Not) Button Function
+// Click if Safe Button Function
 function changeStatus() {
-
     if (spiesInDanger >= 1) {
         spiesInDanger--;
         console.log(spiesInDanger);
     }
+
+    if (spiesInDanger === 1) {
+        $('.spiesInDangerLabel').html("! Warning:  " + "<div class='numSpiesInDanger'></div>" + " Spy in Danger");
+        console.log("one spy");
+    } else {
+        $('.spiesInDangerLabel').html("! Warning:  " + "<div class='numSpiesInDanger'></div>" + " Spies in Danger");
+    }
+
     // change text to Safe or Danger
     $(this).text("Click if Safe");
 
@@ -105,14 +117,21 @@ function changeStatus() {
     }
 }
 
-//
+// Click if Danger Button Function
 function spyDangerButton() {
     if (spiesInDanger >= 0) {
         spiesInDanger++;
         console.log(spiesInDanger);
-
         $(".dangerMessage").show();
     }
+
+    if (spiesInDanger === 1) {
+        $('.spiesInDangerLabel').html("! Warning:  " + "<div class='numSpiesInDanger'></div>" + " Spy in Danger");
+        console.log("one spy");
+    } else {
+        $('.spiesInDangerLabel').html("! Warning:  " + "<div class='numSpiesInDanger'></div>" + " Spies in Danger");
+    }
+
 
     //change background color - red if in danger, yellow if safe
     $(this).parent().toggleClass("spyInDanger");
