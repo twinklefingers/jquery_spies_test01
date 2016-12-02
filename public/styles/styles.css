@@ -1,45 +1,77 @@
 h1 {}
 
 h2 {
-    padding: 0 3% 0 3%;
     margin: 0;
 }
 
-.container {
-    border: 1px solid black;
-    height: 300px;
+button {
+    float: right;
 }
 
-.newContainer {
+.addSpy {
+    float: none;
+}
+
+.container {
     border: 1px solid black;
 }
 
 .spy {
     background-color: yellow;
+    font-weight: bolder;
+    border: thin solid black;
+    width: 97.8%;
+    padding: 1%;
+    margin: 0;
 }
 
 .spyInDanger {
     background-color: red;
+    border: thin solid black;
+    width: 97.8%;
+    padding: 1%;
+    margin: 0;
 }
 
 .deadSpy {
-  background-color: black;
-  color: white;
+    background-color: black;
+    color: white;
 }
 
 .spyStats {
     /*float: right;*/
-    display: block;
-    border: thin solid green;
+    border: thin dashed black;
     position: absolute;
     top: 0;
     right: 0;
+    padding: 1.5%;
 }
 
 .hiredSpiesNum {
-  display: inline;
+    display: inline;
 }
 
-.hiredSpiesLabel{
-  display: inline;
+.hiredSpiesLabel {
+    display: inline;
+}
+
+.hiredSpiesLabel {
+    display: inline;
+}
+
+.activeSpiesNum {
+    display: inline;
+}
+
+.dangerMessage {
+  color: red;
+  font-weight: bolder;
+}
+
+.spiesInDangerLabel {
+    display: inline;
+}
+
+.numSpiesInDanger {
+    display: inline;
 }
