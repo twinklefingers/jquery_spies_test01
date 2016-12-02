@@ -40,7 +40,7 @@ button {
 
 .spyStats {
     /*float: right;*/
-    border: thin dashed black;
+    /*border: thin dashed black;*/
     position: absolute;
     top: 0;
     right: 0;

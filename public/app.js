@@ -91,12 +91,11 @@ function spyDied() {
 function changeStatus() {
     if (spiesInDanger >= 1) {
         spiesInDanger--;
-        console.log(spiesInDanger);
+        // console.log(spiesInDanger);
     }
 
     if (spiesInDanger === 1) {
         $('.spiesInDangerLabel').html("! Warning:  " + "<div class='numSpiesInDanger'></div>" + " Spy in Danger");
-        console.log("one spy");
     } else {
         $('.spiesInDangerLabel').html("! Warning:  " + "<div class='numSpiesInDanger'></div>" + " Spies in Danger");
     }
@@ -121,13 +120,12 @@ function changeStatus() {
 function spyDangerButton() {
     if (spiesInDanger >= 0) {
         spiesInDanger++;
-        console.log(spiesInDanger);
+        // console.log(spiesInDanger);
         $(".dangerMessage").show();
     }
 
     if (spiesInDanger === 1) {
         $('.spiesInDangerLabel').html("! Warning:  " + "<div class='numSpiesInDanger'></div>" + " Spy in Danger");
-        console.log("one spy");
     } else {
         $('.spiesInDangerLabel').html("! Warning:  " + "<div class='numSpiesInDanger'></div>" + " Spies in Danger");
     }
